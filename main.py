@@ -25,3 +25,12 @@ if __name__ == '__main__':
     _2P_Face.capture("Person_2.png")
     _2P_Face = None
     print("2P Gacha")
+
+    Blink = EyesModel()
+    while True:
+        if cv2.waitKey(1) != ord('q'):
+            Blink.open()
+        if keyboard.is_pressed("q"):
+            print("You pressed q")
+            break
+    Blink = None
