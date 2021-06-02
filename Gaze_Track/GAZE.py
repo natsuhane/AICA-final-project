@@ -1,4 +1,4 @@
-from GazeTracking.gaze_tracking.eyes_model import EyesModel
+from GazeTracking.Gaze_Track.gaze_tracking.eyes_model import EyesModel
 import cv2
 predict = EyesModel()
 while True:
