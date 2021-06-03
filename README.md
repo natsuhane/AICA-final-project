@@ -18,9 +18,9 @@ dlib == 19.16.0 (以上也可以)
 #### 2. Pycharm Venv:
 > 需先安裝 pycharm
 
-![img.png](readmemg.png)
-![img_1.png](readmemg_1.png)
-![img_2.png](readmemg_2.png)
+![img.png](readme/img.png)
+![img_1.png](readme/img_1.png)
+![img_2.png](readme/img_2.png)
 
 ## Execute the code:
-`python Gaze.py`
+`python main .py`
