@@ -1,5 +1,6 @@
 # Gaze Tracking
-Fork from [antoinelame / GazeTracking](https://github.com/antoinelame/GazeTracking)
+### Fork from [antoinelame / GazeTracking](https://github.com/antoinelame/GazeTracking)
+### Fork from [enzg / image-background-remove-tool](https://github.com/enzg/image-background-remove-tool)
 ## 需要安裝的Library
 Install all the dependencies from ```requirements.txt``` via ```pip install -r requirements.txt```
 ### 安裝 Dlib 教學
@@ -19,6 +20,7 @@ Install all the dependencies from ```requirements.txt``` via ```pip install -r r
 ![img_2.png](readme/img_2.png)
 
 ## Execute the code:
+`./setup.bat`
 `python main.py`
 
 ## `main.py`:
@@ -87,3 +89,4 @@ while True:
         break
 Blink = None
 ```
+

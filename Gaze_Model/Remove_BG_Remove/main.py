@@ -19,7 +19,7 @@ class RemoveBackground:
         print(os.path.dirname(__file__))
         # Parse arguments
         input_path = os.path.dirname(__file__) + '/Capture/' + player_input
-        output_path = os.path.dirname(__file__) + '/Capture/' +  player_output
+        output_path = os.path.dirname(__file__) + '/Capture/' + player_output
         model = DeepLabModel("xception_model")  # Init model
         jpeg_str = open(input_path, "rb").read()
         image = Image.open(BytesIO(jpeg_str))
