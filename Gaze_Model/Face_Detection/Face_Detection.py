@@ -1,5 +1,6 @@
 import dlib
 import cv2
+import os
 
 
 class DetectFace:
@@ -13,6 +14,7 @@ class DetectFace:
         self.frame = 0
         self.img = 0
         self.Person = name
+
         if not self.webcam.isOpened():
             print("Cannot open camera")
             exit()
@@ -43,7 +45,7 @@ class DetectFace:
 
     def capture(self, img_name):
         self.img = self.img[self.Y - 20:self.Y + self.height, self.X: self.X + self.width]
-        cv2.imwrite(str(img_name), self.img)
+        cv2.imwrite("./Gaze_Model/Remove_BG_Remove/Capture/" + str(img_name), self.img)
 
     def __del__(self):
         self.webcam = None

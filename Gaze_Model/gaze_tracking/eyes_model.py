@@ -8,10 +8,12 @@ from .gaze_tracking import GazeTracking
 
 
 class EyesModel:
-    def __init__(self):
+    def __init__(self, location1, location2):
         self.gaze1P = GazeTracking()
         self.gaze2P = GazeTracking()
         self.webcam = cv2.VideoCapture(0)
+        self.Location1P = location1
+        self.Location2P = location2
 
     def open(self):
         _, frame = self.webcam.read()
@@ -55,11 +57,10 @@ class EyesModel:
                     (147, 58, 31), 1)
         cv2.putText(frame, "Right pupil: " + str(right_pupil_2P), (330, 165), cv2.FONT_HERSHEY_DUPLEX, 0.5,
                     (147, 58, 31), 1)
-        cv2.line(frame, (320, 0), (320, 480), (0, 0, 255), 1)
-        cv2.namedWindow("DEMO", 0)
-        cv2.namedWindow("DEMO1", 0)
-        cv2.moveWindow("DEMO", 0, 0)
-        cv2.moveWindow("DEMO1", 400, 0)
-        cv2.imshow("DEMO", frame[:, :320])
-        cv2.imshow("DEMO1", frame[:, 320:])
+        cv2.namedWindow("1P Eyes", 0)
+        cv2.namedWindow("2P Eyes", 0)
+        cv2.moveWindow("1P Eyes", self.Location1P[0], self.Location1P[1])
+        cv2.moveWindow("2P Eyes", self.Location2P[0], self.Location2P[1])
+        cv2.imshow("1P Eyes", frame[:, :320])
+        cv2.imshow("2P Eyes", frame[:, 320:])
         return text1P, text2P
