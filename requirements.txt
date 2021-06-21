@@ -1,0 +1,9 @@
+numpy
+opencv_python
+dlib
+tqdm
+scipy
+wget
+numpy
+Pillow
+tensorflow
