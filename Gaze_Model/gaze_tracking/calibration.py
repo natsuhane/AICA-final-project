@@ -55,8 +55,11 @@ class Calibration(object):
         trials = {}
 
         for threshold in range(5, 100, 5):
-            iris_frame = Pupil.image_processing(eye_frame, threshold)
-            trials[threshold] = Calibration.iris_size(iris_frame)
+            try:
+                iris_frame = Pupil.image_processing(eye_frame, threshold)
+                trials[threshold] = Calibration.iris_size(iris_frame)
+            except:
+                print("!! calibration find_best_threshold()")
 
         best_threshold, iris_size = min(trials.items(), key=(lambda p: abs(p[1] - average_iris_size)))
         return best_threshold
@@ -69,8 +72,11 @@ class Calibration(object):
             eye_frame (numpy.ndarray): Frame of the eye
             side: Indicates whether it's the left eye (0) or the right eye (1)
         """
-        threshold = self.find_best_threshold(eye_frame)
-
+        threshold = 50 ##########
+        try:
+            threshold = self.find_best_threshold(eye_frame)
+        except:
+            print("calibration evaluate()")
         if side == 0:
             self.thresholds_left.append(threshold)
         elif side == 1:

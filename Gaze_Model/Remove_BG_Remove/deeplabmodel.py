@@ -21,7 +21,8 @@ class DeepLabModel(object):
         models_address = open(os.path.join(os.path.dirname(__file__),
                                            'models',
                                            'xception_model',
-                                           'deeplabv3_pascal_train_aug',
+                                        #    'deeplabv3_pascal_train_aug',
+                                            'model',
                                            'frozen_inference_graph.pb'), 'rb')
         graph_def = tf.compat.v1.GraphDef.FromString(models_address.read())
         if graph_def is None:

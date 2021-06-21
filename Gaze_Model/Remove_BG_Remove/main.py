@@ -16,10 +16,14 @@ from .deeplabmodel import DeepLabModel
 class RemoveBackground:
     def __init__(self, player_input, player_output):
         """CLI"""
-        print(os.path.dirname(__file__))
+        # print(os.path.dirname(__file__))
         # Parse arguments
-        input_path = os.path.dirname(__file__) + '/Capture/' + player_input
-        output_path = os.path.dirname(__file__) + '/Capture/' + player_output
+
+        cwd = os.path.abspath(os.path.dirname(__file__))
+        input_path = os.path.abspath(os.path.join(cwd, "Capture", player_input))
+        # input_path = os.path.dirname(__file__) + '\Capture\' + player_input
+        output_path = os.path.abspath(os.path.join(cwd, "Capture", player_output))
+        # output_path = os.path.dirname(__file__) + '\Capture\' + player_output
         model = DeepLabModel("xception_model")  # Init model
         jpeg_str = open(input_path, "rb").read()
         image = Image.open(BytesIO(jpeg_str))
@@ -38,6 +42,8 @@ class RemoveBackground:
                     dummy_img[y, x] = [r, g, b, 255]
         img = Image.fromarray(dummy_img)
         img.save(output_path)
+        print("save")
+        print(output_path)
 
 
 

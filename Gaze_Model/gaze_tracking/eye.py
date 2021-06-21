@@ -50,14 +50,16 @@ class Eye(object):
         mask = np.full((height, width), 255, np.uint8)
         cv2.fillPoly(mask, [region], (0, 0, 0))
         eye = cv2.bitwise_not(black_frame, frame.copy(), mask=mask)
-
+        # print("eye.py 53")
+        # print(eye)
         # Cropping on the eye
         margin = 5
         min_x = np.min(region[:, 0]) - margin
         max_x = np.max(region[:, 0]) + margin
         min_y = np.min(region[:, 1]) - margin
         max_y = np.max(region[:, 1]) + margin
-
+        # print("eye.py 61")
+        # print(min_x, max_x, min_y, max_y)
         self.frame = eye[min_y:max_y, min_x:max_x]
         self.origin = (min_x, min_y)
 

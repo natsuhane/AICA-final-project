@@ -5,19 +5,23 @@ Check the README.md for complete documentation.
 
 import cv2
 from .gaze_tracking import GazeTracking
-
-
 class EyesModel:
     def __init__(self, location1, location2):
         self.gaze1P = GazeTracking()
         self.gaze2P = GazeTracking()
         self.webcam = cv2.VideoCapture(0)
+        # self.webcam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.Location1P = location1
         self.Location2P = location2
 
     def open(self):
         _, frame = self.webcam.read()
+        if not self.webcam.isOpened():
+            raise IOError("Cannot open webcam")
+        # _, frame = self.cv2.VideoCapture(0)
         frame = cv2.flip(frame, 1, dst=None)
+        if not self.webcam.isOpened():
+            frame = cv2.flip(frame, 1, dst=None)
         text1P = "NONE"
         text2P = "NONE"
         self.gaze1P.refresh(frame[:, :360, :])

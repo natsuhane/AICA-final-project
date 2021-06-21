@@ -1,3 +1,4 @@
+[TOC]
 # Gaze Tracking
 ### Fork from [antoinelame / GazeTracking](https://github.com/antoinelame/GazeTracking)
 ### Fork from [enzg / image-background-remove-tool](https://github.com/enzg/image-background-remove-tool)
@@ -90,3 +91,21 @@ while True:
 Blink = None
 ```
 
+# Pygame
+## 套件
+* python 3.8.10
+* pygame 2.0.1
+* (補充) dlib 我用 ```$ conda install -c conda-forge dlib``` 才成功
+* 其餘同 **Gaze Tracking** 部分
+## execute
+```$ python game.py```
+## Model
+### 修正
+* path problem
+* read file (.dat to .txt)
+* fail to capture (use while loop)
+### Warning
+* 一些看起來很麻煩的error, 只用try except包起來而已 :D
+    * bilateralFilter
+    * fail to get frame
+    * ...

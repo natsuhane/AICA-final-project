@@ -45,7 +45,17 @@ class DetectFace:
 
     def capture(self, img_name):
         self.img = self.img[self.Y - 20:self.Y + self.height, self.X: self.X + self.width]
-        cv2.imwrite("./Gaze_Model/Remove_BG_Remove/Capture/" + str(img_name), self.img)
+        cwd = os.path.abspath(os.path.dirname(__file__))
+        output_path = os.path.abspath(os.path.join(cwd, "..\Remove_BG_Remove\Capture", str(img_name)))
+        try:
+            cv2.imwrite(output_path, self.img)
+            print("capture")
+            print(output_path)
+            # cv2.imwrite("./Gaze_Model/Remove_BG_Remove/Capture/" + str(img_name), self.img)
+            return 1 ###
+        except:
+            print("capture wrong !") 
+            return 0 ###
 
     def __del__(self):
         self.webcam = None
