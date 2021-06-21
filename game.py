@@ -36,6 +36,7 @@ abs_path = os.path.abspath(os.path.dirname(__file__)) # this file absolute path
 player = True # true=p1 false=p2
 gravity = -25
 vx = 60
+wind_effect = 7
 p1_throw = False
 p2_throw = False
 window = pg.display.Info()
@@ -208,9 +209,7 @@ while running:
                 setting = True
                 welcome = False
         elif event.type == pg.KEYUP:
-            if event.key == pg.K_ESCAPE:
-                running = False
-            elif event.key == pg.K_s and player:
+            if event.key == pg.K_s and player:
                 p1_throw = True
             elif event.key == pg.K_d and not player:
                 p2_throw = True
@@ -236,7 +235,7 @@ while running:
         rect = text.get_rect()
         rect.center = (int(width*0.5), int(height*0.35+width*0.05))
         bg.blit(text, rect.topleft)
-        if button_c == 20:
+        if button_c == 10:
             button = not button
             button_c = 0
         button_c += 1
@@ -306,7 +305,7 @@ while running:
             else:
                 # ball flying
                 if ball_y <= 200:
-                    ball_x += vx + wind_vx*7
+                    ball_x += vx + wind_vx*wind_effect
                     ball_vy += gravity
                     ball_y -= ball_vy
                     render_p1_fish()
@@ -347,7 +346,7 @@ while running:
             else:
                 # ball flying
                 if ball_y <= 200:
-                    ball_x -= vx - wind_vx*3
+                    ball_x -= vx - wind_vx*wind_effect
                     ball_vy += gravity
                     ball_y -= ball_vy
                     render_p2_fish()

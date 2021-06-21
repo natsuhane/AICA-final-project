@@ -97,7 +97,7 @@ Blink = None
 * pygame 2.0.1
 * (補充) dlib 我用 ```$ conda install -c conda-forge dlib``` 才成功
 * 其餘同 **Gaze Tracking** 部分
-## execute
+## Execute
 ```$ python game.py```
 ## Model
 ### 修正
@@ -109,3 +109,28 @@ Blink = None
     * bilateralFilter
     * fail to get frame
     * ...
+    * will print(" **!! ...** ")
+## `game.py`
+### Note
+* 拍完照片在等待後製 (去背) 時，game window will temporarily die **(沒有回應)**
+    * Capture()用thread會跟Blink thread打架 (看起來是destroy windows時出問題)<br>所以Capture還是放在main while loop裡
+    * 暫時卡死遊戲畫面, don't care
+* For test
+    * Keyboard **s** for player1 (left) blink
+    * Keyboard **d** for player2 (right) blink
+* You may modify...
+    * 風向影響程度 `wind_effect`
+    * 重力加速度 `gravity`
+    * rate: `clock.tick( ) ` in main while loop
+    * all image (include cursor)
+    * ...etc
+### Unsolved
+* Remove() too slow ...
+* Blink detecter's accuracy
+* window's size fixed <br>(can't responsive, pygame UI to difficult too adjust QAQ)
+* messy :D
+* ugly UI :D
+### Image source
+* [flaticon](https://www.flaticon.com/)
+* [pngitem](https://www.pngitem.com/)
+* To be added... (background)
